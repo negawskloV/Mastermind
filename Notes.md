@@ -1,1 +1,10 @@
-
+## Notes
+8 colours:
+  - Black
+  - White
+  - Red
+  - Blue
+  - Green
+  - Yellow
+  - Orange
+  - Purple
