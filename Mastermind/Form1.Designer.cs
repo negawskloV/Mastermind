@@ -40,6 +40,10 @@ namespace Mastermind
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnHowTo = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.btnSol1 = new System.Windows.Forms.Button();
+            this.btnSol2 = new System.Windows.Forms.Button();
+            this.btnSol3 = new System.Windows.Forms.Button();
+            this.btnSol4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBlack
@@ -123,6 +127,7 @@ namespace Mastermind
             this.btnSubmit.TabIndex = 8;
             this.btnSubmit.Text = "Submit Attempt";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnHowTo
             // 
@@ -139,18 +144,54 @@ namespace Mastermind
             // 
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.Color.Red;
-            this.btnReset.Location = new System.Drawing.Point(683, 12);
+            this.btnReset.Location = new System.Drawing.Point(616, 12);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(90, 55);
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             // 
+            // btnSol1
+            // 
+            this.btnSol1.Location = new System.Drawing.Point(175, 12);
+            this.btnSol1.Name = "btnSol1";
+            this.btnSol1.Size = new System.Drawing.Size(60, 60);
+            this.btnSol1.TabIndex = 11;
+            this.btnSol1.UseVisualStyleBackColor = true;
+            // 
+            // btnSol2
+            // 
+            this.btnSol2.Location = new System.Drawing.Point(241, 12);
+            this.btnSol2.Name = "btnSol2";
+            this.btnSol2.Size = new System.Drawing.Size(60, 60);
+            this.btnSol2.TabIndex = 12;
+            this.btnSol2.UseVisualStyleBackColor = true;
+            // 
+            // btnSol3
+            // 
+            this.btnSol3.Location = new System.Drawing.Point(307, 12);
+            this.btnSol3.Name = "btnSol3";
+            this.btnSol3.Size = new System.Drawing.Size(60, 60);
+            this.btnSol3.TabIndex = 13;
+            this.btnSol3.UseVisualStyleBackColor = true;
+            // 
+            // btnSol4
+            // 
+            this.btnSol4.Location = new System.Drawing.Point(373, 12);
+            this.btnSol4.Name = "btnSol4";
+            this.btnSol4.Size = new System.Drawing.Size(60, 60);
+            this.btnSol4.TabIndex = 14;
+            this.btnSol4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 651);
+            this.ClientSize = new System.Drawing.Size(718, 651);
+            this.Controls.Add(this.btnSol4);
+            this.Controls.Add(this.btnSol3);
+            this.Controls.Add(this.btnSol2);
+            this.Controls.Add(this.btnSol1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnHowTo);
             this.Controls.Add(this.btnSubmit);
@@ -182,6 +223,10 @@ namespace Mastermind
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnHowTo;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnSol1;
+        private System.Windows.Forms.Button btnSol2;
+        private System.Windows.Forms.Button btnSol3;
+        private System.Windows.Forms.Button btnSol4;
     }
 }
 
