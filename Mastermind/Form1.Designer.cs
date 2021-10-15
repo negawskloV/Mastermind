@@ -165,6 +165,7 @@ namespace Mastermind
             // btnSol1
             // 
             this.btnSol1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSol1.Enabled = false;
             this.btnSol1.Location = new System.Drawing.Point(175, 12);
             this.btnSol1.Name = "btnSol1";
             this.btnSol1.Size = new System.Drawing.Size(60, 60);
@@ -173,6 +174,7 @@ namespace Mastermind
             // 
             // btnSol2
             // 
+            this.btnSol2.Enabled = false;
             this.btnSol2.Location = new System.Drawing.Point(241, 12);
             this.btnSol2.Name = "btnSol2";
             this.btnSol2.Size = new System.Drawing.Size(60, 60);
@@ -181,6 +183,7 @@ namespace Mastermind
             // 
             // btnSol3
             // 
+            this.btnSol3.Enabled = false;
             this.btnSol3.Location = new System.Drawing.Point(307, 12);
             this.btnSol3.Name = "btnSol3";
             this.btnSol3.Size = new System.Drawing.Size(60, 60);
@@ -189,6 +192,7 @@ namespace Mastermind
             // 
             // btnSol4
             // 
+            this.btnSol4.Enabled = false;
             this.btnSol4.Location = new System.Drawing.Point(373, 12);
             this.btnSol4.Name = "btnSol4";
             this.btnSol4.Size = new System.Drawing.Size(60, 60);

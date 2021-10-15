@@ -17,6 +17,11 @@ namespace Mastermind
             InitializeComponent();
         }
 
+        List<Button> btnAttGeneratedList = new List<Button>();
+        List<Button> btnResGeneratedList = new List<Button>();
+        List<Color> solutionColors = new List<Color>();
+        List<Color> attemptColors = new List<Color>();
+        Color color;
         int turn = 0;
         string[] colorIndex = new string[8] { "Black", "White", "Red", "Blue", "Green", "Yellow", "Orange", "Purple" };
 
@@ -30,6 +35,10 @@ namespace Mastermind
             int sol4 = solution[3];
             MessageBox.Show(colorIndex[sol1] + ", " + colorIndex[sol2] + ", " + colorIndex[sol3] + ", " + colorIndex[sol4]);
             Size = new Size(730, 550);
+            solutionColors.Add(Color.FromName(colorIndex[sol1]));
+            solutionColors.Add(Color.FromName(colorIndex[sol2]));
+            solutionColors.Add(Color.FromName(colorIndex[sol3]));
+            solutionColors.Add(Color.FromName(colorIndex[sol4]));
             btnSol1.BackColor = Color.FromName(colorIndex[sol1]);
             btnSol2.BackColor = Color.FromName(colorIndex[sol2]);
             btnSol3.BackColor = Color.FromName(colorIndex[sol3]);
@@ -40,9 +49,9 @@ namespace Mastermind
         {
             generateAttRow(175, 120 + count * 66, 4, 60);
             generateResRow(439, 120 + count * 66, 27);
-            if (turn > 4)
+            if (count > 4)
             {
-                Size = new Size(730, 350 + (55 * turn));
+                Size = new Size(730, 350 + (55 * count));
             }
         }
 
@@ -50,26 +59,42 @@ namespace Mastermind
         {
             for (int i = 0; i < 2; i++)
             {
-                generateBtn(startX + i * (size + 6), startY, size);
-                generateBtn(startX + i * (size + 6), startY + 6 + size, size);
+                generateResBtn(startX + i * (size + 6), startY, size);
+                generateResBtn(startX + i * (size + 6), startY + 6 + size, size);
             }
         }
 
-        private void generateBtn(int x, int y, int size)
+        private void generateResBtn(int x, int y, int size)
         {
-            Button button = new Button();
-            button.Width = size;
-            button.Height = size;
-            button.Left = x;
-            button.Top = y;
-            this.Controls.Add(button);
+            Button btnResult = new Button();
+            btnResult.Width = size;
+            btnResult.Height = size;
+            btnResult.Left = x;
+            btnResult.Top = y;
+            btnResult.Enabled = false;
+            this.Controls.Add(btnResult);
+            btnResGeneratedList.Add(btnResult);
+        }
+
+        private void generateAttBtn(int x, int y, int size, int count, int i)
+        {
+            Button btnAttempt = new Button();
+            btnAttempt.Name = "btnAttempt";
+            btnAttempt.Width = size;
+            btnAttempt.Height = size;
+            btnAttempt.Left = x;
+            btnAttempt.Top = y;
+            btnAttempt.Click += new EventHandler(btnAttempt_Click);
+            this.Controls.Add(btnAttempt);
+            btnAttGeneratedList.Add(btnAttempt);
+
         }
 
         private void generateAttRow(int startX, int startY, int count, int size)
         {
             for (int i = 0; i < count; i++)
             {
-                generateBtn(startX + i * (size + 6), startY, size);
+                generateAttBtn(startX + i * (size + 6), startY, size, count, i);
             }
         }
 
@@ -94,20 +119,58 @@ namespace Mastermind
 
         }
 
+        private void btnAttempt_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            button.BackColor = color;
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            
             if (turn < 11)
             {
+                int index = 0;
+                int ind = 0;
                 turn++;
+                for (int i = btnAttGeneratedList.Count - 4; i < btnAttGeneratedList.Count; i++)
+                {
+                    Button b = btnAttGeneratedList[i];
+                    attemptColors.Add(b.BackColor);
+                    bool matchPos = attemptColors[index].Equals(solutionColors[index]);
+                    bool matchColor = attemptColors.Contains(solutionColors[index]);
+                    
+                    if (matchPos == true)
+                    {
+                        Button b1 = btnResGeneratedList[btnResGeneratedList.Count-4+ind];
+                        b1.BackColor = Color.Red;
+                        ind++;
+                    } else if (matchColor == true)
+                    {
+                        Button b1 = btnResGeneratedList[btnResGeneratedList.Count - 4 + ind];
+                        b1.BackColor = Color.White;
+                        ind++;
+                    }
+                    index++;
+                }
+                foreach (Button b in btnAttGeneratedList)
+                {
+                    b.Enabled = false;
+                }
                 generateRow(turn);
+
             }
         }
 
         private void btnPurple_Click(object sender, EventArgs e)
         {
             Button btnClicked = sender as Button;
-            string selectedColor = btnClicked.BackColor.ToString();
-            label1.Text = "Selected color: \n" + selectedColor;
+            Color selectedColor = btnClicked.BackColor;
+            string selectedColorString = selectedColor.ToString();
+            int colorLength = selectedColorString.Length;
+            string selectedColorSubString = selectedColorString.Substring(7, colorLength - 8);
+            label1.Text = "Selected color: \n" + selectedColorSubString;
+            color = selectedColor;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
