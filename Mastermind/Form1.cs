@@ -18,6 +18,7 @@ namespace Mastermind
         }
 
         int turn = 0;
+        string[] colorIndex = new string[8] { "Black", "White", "Red", "Blue", "Green", "Yellow", "Orange", "Purple" };
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -27,13 +28,22 @@ namespace Mastermind
             int sol2 = solution[1];
             int sol3 = solution[2];
             int sol4 = solution[3];
-            MessageBox.Show(sol1 + ", " + sol2 + ", " + sol3 + ", " + sol4);
+            MessageBox.Show(colorIndex[sol1] + ", " + colorIndex[sol2] + ", " + colorIndex[sol3] + ", " + colorIndex[sol4]);
+            Size = new Size(730, 550);
+            btnSol1.BackColor = Color.FromName(colorIndex[sol1]);
+            btnSol2.BackColor = Color.FromName(colorIndex[sol2]);
+            btnSol3.BackColor = Color.FromName(colorIndex[sol3]);
+            btnSol4.BackColor = Color.FromName(colorIndex[sol4]);
         }
 
         private void generateRow(int count)
         {
             generateAttRow(175, 120 + count * 66, 4, 60);
             generateResRow(439, 120 + count * 66, 27);
+            if (turn > 4)
+            {
+                Size = new Size(730, 350 + (55 * turn));
+            }
         }
 
         private void generateResRow(int startX, int startY, int size)
@@ -69,7 +79,7 @@ namespace Mastermind
             Random rd = new Random();
             for (int i = 0; i < solution.Length; i++)
             {
-                solution[i] = rd.Next(1,8);
+                solution[i] = rd.Next(0, 7);
             }
             return solution;
         }
@@ -91,12 +101,18 @@ namespace Mastermind
                 turn++;
                 generateRow(turn);
             }
-            // int[] solution = (int[])makeSolution();
-            // int sol1 = solution[0];
-            // int sol2 = solution[1];
-            // int sol3 = solution[2];
-            // int sol4 = solution[3];
-            // MessageBox.Show(sol1 + ", " + sol2 + ", " + sol3 + ", " + sol4);
+        }
+
+        private void btnPurple_Click(object sender, EventArgs e)
+        {
+            Button btnClicked = sender as Button;
+            string selectedColor = btnClicked.BackColor.ToString();
+            label1.Text = "Selected color: \n" + selectedColor;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

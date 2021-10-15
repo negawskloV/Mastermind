@@ -29,6 +29,7 @@ namespace Mastermind
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnBlack = new System.Windows.Forms.Button();
             this.btnWhite = new System.Windows.Forms.Button();
             this.btnGreen = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@ namespace Mastermind
             this.btnSol2 = new System.Windows.Forms.Button();
             this.btnSol3 = new System.Windows.Forms.Button();
             this.btnSol4 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBlack
@@ -54,6 +56,7 @@ namespace Mastermind
             this.btnBlack.Size = new System.Drawing.Size(40, 40);
             this.btnBlack.TabIndex = 0;
             this.btnBlack.UseVisualStyleBackColor = false;
+            this.btnBlack.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnWhite
             // 
@@ -63,6 +66,7 @@ namespace Mastermind
             this.btnWhite.Size = new System.Drawing.Size(40, 40);
             this.btnWhite.TabIndex = 1;
             this.btnWhite.UseVisualStyleBackColor = false;
+            this.btnWhite.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnGreen
             // 
@@ -72,6 +76,7 @@ namespace Mastermind
             this.btnGreen.Size = new System.Drawing.Size(40, 40);
             this.btnGreen.TabIndex = 2;
             this.btnGreen.UseVisualStyleBackColor = false;
+            this.btnGreen.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnRed
             // 
@@ -81,6 +86,7 @@ namespace Mastermind
             this.btnRed.Size = new System.Drawing.Size(40, 40);
             this.btnRed.TabIndex = 3;
             this.btnRed.UseVisualStyleBackColor = false;
+            this.btnRed.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnBlue
             // 
@@ -90,6 +96,7 @@ namespace Mastermind
             this.btnBlue.Size = new System.Drawing.Size(40, 40);
             this.btnBlue.TabIndex = 4;
             this.btnBlue.UseVisualStyleBackColor = false;
+            this.btnBlue.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnYellow
             // 
@@ -99,6 +106,7 @@ namespace Mastermind
             this.btnYellow.Size = new System.Drawing.Size(40, 40);
             this.btnYellow.TabIndex = 5;
             this.btnYellow.UseVisualStyleBackColor = false;
+            this.btnYellow.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnOrange
             // 
@@ -108,6 +116,7 @@ namespace Mastermind
             this.btnOrange.Size = new System.Drawing.Size(40, 40);
             this.btnOrange.TabIndex = 6;
             this.btnOrange.UseVisualStyleBackColor = false;
+            this.btnOrange.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnPurple
             // 
@@ -117,6 +126,7 @@ namespace Mastermind
             this.btnPurple.Size = new System.Drawing.Size(40, 40);
             this.btnPurple.TabIndex = 7;
             this.btnPurple.UseVisualStyleBackColor = false;
+            this.btnPurple.Click += new System.EventHandler(this.btnPurple_Click);
             // 
             // btnSubmit
             // 
@@ -150,14 +160,16 @@ namespace Mastermind
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnSol1
             // 
+            this.btnSol1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSol1.Location = new System.Drawing.Point(175, 12);
             this.btnSol1.Name = "btnSol1";
             this.btnSol1.Size = new System.Drawing.Size(60, 60);
             this.btnSol1.TabIndex = 11;
-            this.btnSol1.UseVisualStyleBackColor = true;
+            this.btnSol1.UseVisualStyleBackColor = false;
             // 
             // btnSol2
             // 
@@ -183,11 +195,22 @@ namespace Mastermind
             this.btnSol4.TabIndex = 14;
             this.btnSol4.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(450, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 40);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Selected color:\r\n   ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 651);
+            this.ClientSize = new System.Drawing.Size(714, 511);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSol4);
             this.Controls.Add(this.btnSol3);
             this.Controls.Add(this.btnSol2);
@@ -203,10 +226,12 @@ namespace Mastermind
             this.Controls.Add(this.btnGreen);
             this.Controls.Add(this.btnWhite);
             this.Controls.Add(this.btnBlack);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Mastermind";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,6 +252,7 @@ namespace Mastermind
         private System.Windows.Forms.Button btnSol2;
         private System.Windows.Forms.Button btnSol3;
         private System.Windows.Forms.Button btnSol4;
+        private System.Windows.Forms.Label label1;
     }
 }
 
