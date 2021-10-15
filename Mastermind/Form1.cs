@@ -22,7 +22,12 @@ namespace Mastermind
         private void Form1_Load(object sender, EventArgs e)
         {
             generateRow(0);
-
+            int[] solution = (int[])makeSolution();
+            int sol1 = solution[0];
+            int sol2 = solution[1];
+            int sol3 = solution[2];
+            int sol4 = solution[3];
+            MessageBox.Show(sol1 + ", " + sol2 + ", " + sol3 + ", " + sol4);
         }
 
         private void generateRow(int count)
@@ -86,12 +91,12 @@ namespace Mastermind
                 turn++;
                 generateRow(turn);
             }
-            int[] solution = (int[])makeSolution();
-            int sol1 = solution[0];
-            int sol2 = solution[1];
-            int sol3 = solution[2];
-            int sol4 = solution[3];
-            MessageBox.Show(sol1 + ", " + sol2 + ", " + sol3 + ", " + sol4);
+            // int[] solution = (int[])makeSolution();
+            // int sol1 = solution[0];
+            // int sol2 = solution[1];
+            // int sol3 = solution[2];
+            // int sol4 = solution[3];
+            // MessageBox.Show(sol1 + ", " + sol2 + ", " + sol3 + ", " + sol4);
         }
     }
 }
