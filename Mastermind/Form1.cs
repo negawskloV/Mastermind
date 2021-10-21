@@ -36,17 +36,11 @@ namespace Mastermind
             int sol2 = solution[1];
             int sol3 = solution[2];
             int sol4 = solution[3];
-            MessageBox.Show(colorIndex[sol1] + ", " + colorIndex[sol2] + ", " + colorIndex[sol3] + ", " + colorIndex[sol4]);
             Size = new Size(730, 550);
             solutionColors.Add(Color.FromName(colorIndex[sol1]));
             solutionColors.Add(Color.FromName(colorIndex[sol2]));
             solutionColors.Add(Color.FromName(colorIndex[sol3]));
             solutionColors.Add(Color.FromName(colorIndex[sol4]));
-            btnSol1.BackColor = Color.FromName(colorIndex[sol1]);
-            btnSol2.BackColor = Color.FromName(colorIndex[sol2]);
-            btnSol3.BackColor = Color.FromName(colorIndex[sol3]);
-            btnSol4.BackColor = Color.FromName(colorIndex[sol4]);
-
         }
 
         private void generateRow(int count)
