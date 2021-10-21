@@ -12,9 +12,11 @@ namespace Mastermind
 {
     public partial class Form1 : Form
     {
+        int[] solution;
         public Form1()
         {
             InitializeComponent();
+            solution = (int[])makeSolution();
         }
 
         List<Button> btnAttGeneratedList = new List<Button>();
@@ -25,7 +27,8 @@ namespace Mastermind
         int turn = 0;
         string[] colorIndex = new string[8] { "Black", "White", "Red", "Blue", "Green", "Yellow", "Orange", "Purple" };
 
-        private void Form1_Load(object sender, EventArgs e)
+
+        public void Form1_Load(object sender, EventArgs e)
         {
             generateRow(0);
             int[] solution = (int[])makeSolution();
@@ -43,6 +46,7 @@ namespace Mastermind
             btnSol2.BackColor = Color.FromName(colorIndex[sol2]);
             btnSol3.BackColor = Color.FromName(colorIndex[sol3]);
             btnSol4.BackColor = Color.FromName(colorIndex[sol4]);
+
         }
 
         private void generateRow(int count)
@@ -127,11 +131,12 @@ namespace Mastermind
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            
+
             if (turn < 11)
             {
                 int index = 0;
                 int ind = 0;
+                int correctCount = 0;
                 turn++;
                 for (int i = btnAttGeneratedList.Count - 4; i < btnAttGeneratedList.Count; i++)
                 {
@@ -139,26 +144,45 @@ namespace Mastermind
                     attemptColors.Add(b.BackColor);
                     bool matchPos = attemptColors[index].Equals(solutionColors[index]);
                     bool matchColor = attemptColors.Contains(solutionColors[index]);
-                    
+
                     if (matchPos == true)
                     {
-                        Button b1 = btnResGeneratedList[btnResGeneratedList.Count-4+ind];
+                        Button b1 = btnResGeneratedList[btnResGeneratedList.Count - 4 + ind];
                         b1.BackColor = Color.Red;
                         ind++;
-                    } else if (matchColor == true)
+                        correctCount++;
+                    }
+                    else if (matchColor == true)
                     {
                         Button b1 = btnResGeneratedList[btnResGeneratedList.Count - 4 + ind];
                         b1.BackColor = Color.White;
                         ind++;
                     }
                     index++;
+
                 }
+                attemptColors.Clear();
                 foreach (Button b in btnAttGeneratedList)
                 {
                     b.Enabled = false;
                 }
-                generateRow(turn);
+                if (correctCount == 4)
+                {
 
+                    btnSol1.BackColor = solutionColors[0];
+                    btnSol2.BackColor = solutionColors[1];
+                    btnSol3.BackColor = solutionColors[2];
+                    btnSol4.BackColor = solutionColors[3];
+                    MessageBox.Show("Congratulations \n YOU WIN!!");
+                }
+                else
+                {
+                    generateRow(turn);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Too bad, you lost. \n Press reset to restart and try again");
             }
         }
 
